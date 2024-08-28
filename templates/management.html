@@ -1,12 +1,27 @@
 {% extends "base.html" %}
 
 {% block title %}Management{% endblock title %}
+{% block style %}
+<style>
+  .card-img-top {
+    width: 100%; /* Ensure the image spans the full width of the card */
+    height: 300px; /* Set a fixed height for the image */
+    object-fit: cover; /* Ensure the whole image fits within the container */
+  }
 
+  .card {
+    /* Ensure the card itself has a fixed height if needed */
+    height: 100%;
+  }
+</style>
+
+
+{% endblock style %}
 {% block body %}
 
 <!-- About Us Section with Background Image -->
 <section
-  style="background-image: url('https://via.placeholder.com/1600x600'); background-size: cover; background-position: center; height: 400px; display: flex; align-items: center; justify-content: center;"
+  style="background-image: url('{% url 'random_image' 'management' %}'); background-size: cover; background-position: center; height: 400px; display: flex; align-items: center; justify-content: center;"
 >
   <div class="text-center text-white">
     <h1>About Management of waste</h1>
@@ -27,7 +42,7 @@
     <!-- First Card: IT Sector -->
     <div class="col-md-4">
       <div class="card h-100">
-        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="IT Sector">
+        <img src="{% url 'random_image' 'it' %}" class="card-img-top" alt="IT Sector">
         <div class="card-body">
           <h5 class="card-title">IT Sector</h5>
           <p class="card-text short-text" id="it-text">
@@ -41,7 +56,7 @@
     <!-- Second Card: Hardware -->
     <div class="col-md-4">
       <div class="card h-100">
-        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Hardware">
+        <img src="{% url 'random_image' 'hardware' %}" class="card-img-top" alt="Hardware">
         <div class="card-body">
           <h5 class="card-title">Hardware</h5>
           <p class="card-text short-text" id="hardware-text">
@@ -55,7 +70,7 @@
     <!-- Third Card: Business Marketing -->
     <div class="col-md-4">
       <div class="card h-100">
-        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Business Marketing">
+        <img src="{% url 'random_image' 'buisness' %}" class="card-img-top" alt="Business Marketing">
         <div class="card-body">
           <h5 class="card-title">Business Marketing</h5>
           <p class="card-text short-text" id="marketing-text">

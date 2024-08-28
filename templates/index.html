@@ -141,8 +141,8 @@
           </form>
         </div>
         <div class="form-section signup-form">
-        <form id="signupForm" method="POST" action="{% url 'signup' %}">
-        {% csrf_token %}
+        <form id="signupForm">
+        {% comment %} {% csrf_token %} {% endcomment %}
             <h2>Register</h2>
             {% comment %} <label for="waste-type">Waste Type:</label>
             <select id="waste-type" name="accountType">

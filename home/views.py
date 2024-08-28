@@ -1,10 +1,13 @@
-from django.shortcuts import render, HttpResponse, Http404,redirect,HttpResponseRedirect
+from django.shortcuts import render, HttpResponse, Http404,redirect
 import os
 import random
 from django.conf import settings
 from home.models import Contact
 from django.contrib import messages
-from django.db import IntegrityError
+from django.conf import settings
+from django.templatetags.static import static
+from django.utils.crypto import get_random_string
+
 
 def random_image_view(request, folder_name):
     """
@@ -19,22 +22,24 @@ def random_image_view(request, folder_name):
         images = [img for img in images if img.endswith(('.png', '.jpg', '.jpeg', '.gif'))]
 
         if not images:
-            raise FileNotFoundError
+            raise FileNotFoundError("No images found in this folder.")
         
+        # Generate a unique cache-busting parameter
+        unique_id = get_random_string(12)  # Generate a random string for uniqueness
+
         # Choose a random image
         random_image = random.choice(images)
 
-        # Construct the image URL
-        image_url = f'static/images/{folder_name}/{random_image}'
-        
-        # Return a redirect to the image URL
-        return HttpResponseRedirect(f'/{image_url}')
+        # Construct the image URL with a unique cache-busting parameter
+        image_url = static(f'images/{folder_name}/{random_image}')
+        full_image_url = f'{image_url}?unique_id={unique_id}'
 
-    except (FileNotFoundError, IndexError):
+        # Return the image file
+        with open(os.path.join(img_folder, random_image), 'rb') as img_file:
+            return HttpResponse(img_file.read(), content_type='image/jpeg')
+    
+    except FileNotFoundError:
         raise Http404("No images found in this folder.")
-    
-    
-
 
 
 # Create your views here.

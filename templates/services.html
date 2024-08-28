@@ -2,12 +2,28 @@
 
 {% block title %}Services{% endblock title %}
 
+{% block style %}
+<style>
+  .card-img-top {
+    width: 100%; /* Ensure the image spans the full width of the card */
+    height: 300px; /* Set a fixed height for the image */
+    object-fit: cover; /* Ensure the whole image fits within the container */
+  }
+
+  .card {
+    /* Ensure the card itself has a fixed height if needed */
+    height: 100%;
+  }
+</style>
+
+
+{% endblock style %}
 {% block body %}
 
 <!-- Services Section with Background Image and Description -->
 
 <section id="sevices"
-  style="background-image: url('https://via.placeholder.com/1600x600'); background-size: cover; background-position: center; height: 400px; display: flex; align-items: center; justify-content: center;"
+  style="background-image: url('{% url 'random_image' 'service' %}'); background-size: cover; background-position: center; height: 400px; display: flex; align-items: center; justify-content: center;"
 >
   <div class="text-center text-white">
     <h1>Our Sevices</h1>
@@ -23,7 +39,7 @@
     <!-- First Card: Recycle Plant -->
     <div class="col-md-6"  id="recycle">
       <div class="card h-100">
-        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Recycle Plant">
+        <img src="{% url 'random_image' 'recycle' %}" class="card-img-top" alt="Recycle Plant">
         <div class="card-body">
           <h5 class="card-title">Recycle Plant</h5>
           <p class="card-text short-text" id="recycle-text">
@@ -37,7 +53,7 @@
     <!-- Second Card: Biogas Plant -->
     <div class="col-md-6" id="biogas">
       <div class="card h-100">
-        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Biogas Plant">
+        <img src="{% url 'random_image' 'biogas' %}" class="card-img-top" alt="Biogas Plant">
         <div class="card-body">
           <h5 class="card-title">Biogas Plant</h5>
           <p class="card-text short-text" id="biogas-text">

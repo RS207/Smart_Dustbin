@@ -4,7 +4,7 @@
 {% block title %}About Us{% endblock title %}
 {% block body %}
 <!-- Our Vision Section -->
-<section style="background-image: url('https://via.placeholder.com/1600x600'); background-size: cover; background-position: center; height: 400px; display: flex; align-items: center; justify-content: center;">
+<section style="background-image: url('{% url 'random_image' 'management' %}'); background-size: cover; background-position: center; height: 400px; display: flex; align-items: center; justify-content: center;">
   <div class="text-center text-white">
     <h1>Our Vision</h1>
     <p class="lead">
@@ -17,7 +17,7 @@
 <div class="my-5"></div>
 
 <!-- Our Mission Section -->
-<section style="background-image: url('https://via.placeholder.com/1600x600'); background-size: cover; background-position: center; height: 400px; display: flex; align-items: center; justify-content: center;">
+<section style="background-image: url('{% url 'random_image' 'service' %}'); background-size: cover; background-position: center; height: 400px; display: flex; align-items: center; justify-content: center;">
   <div class="text-center text-white">
     <h1>Our Mission</h1>
     <p class="lead">
@@ -53,8 +53,8 @@
             <img src="{% static 'images/team/raghav.jpg' %}" class="img-fluid rounded-circle" alt="Member 2" style="width: 150px; height: 150px;">
           </div>
           <div class="bg-light p-4" style="width: 300px; border-radius: 1.5rem; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-            <h4 class="text-start mb-2"><strong>Jane Smith</strong></h4>
-            <p class="text-start mb-0">CTO</p>
+            <h4 class="text-start mb-2"><strong>Raghav Singhal</strong></h4>
+            <p class="text-start mb-0">Web Developer</p>
           </div>
         </div>
       </div>
@@ -67,8 +67,8 @@
             <img src="{% static 'images/team/rabina.jpg' %}" class="img-fluid rounded-circle" alt="Member 3" style="width: 150px; height: 150px;">
           </div>
           <div class="bg-light p-4" style="width: 300px; border-radius: 1.5rem; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-            <h4 class="text-start mb-2"><strong>Emily Johnson</strong></h4>
-            <p class="text-start mb-0">COO</p>
+            <h4 class="text-start mb-2"><strong>Rabina Kumari Shah</strong></h4>
+            <p class="text-start mb-0">Design and MAnagement</p>
           </div>
         </div>
       </div>
@@ -81,8 +81,8 @@
             <img src="{% static 'images/team/Akansha.jpg' %}" class="img-fluid rounded-circle" alt="Member 4" style="width: 150px; height: 150px;">
           </div>
           <div class="bg-light p-4" style="width: 300px; border-radius: 1.5rem; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-            <h4 class="text-start mb-2"><strong>Michael Brown</strong></h4>
-            <p class="text-start mb-0">CFO</p>
+            <h4 class="text-start mb-2"><strong>Akanksha Chauhan</strong></h4>
+            <p class="text-start mb-0">Buisness and marketting</p>
           </div>
         </div>
       </div>
