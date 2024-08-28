@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}Management{% endblock title %}
+
+{% block body %}
+
+<!-- About Us Section with Background Image -->
+<section
+  style="background-image: url('https://via.placeholder.com/1600x600'); background-size: cover; background-position: center; height: 400px; display: flex; align-items: center; justify-content: center;"
+>
+  <div class="text-center text-white">
+    <h1>About Management of waste</h1>
+    <p class="lead">
+      We are a company dedicated to building smart dustbins that automatically detect the type of waste and open the correct bin.
+    </p>
+  </div>
+</section>
+
+<!-- Services Section with Three Side-by-Side Cards -->
+<div class="container my-5">
+  <!-- Centered 'Our Services' title -->
+  <div class="text-center mb-4">
+    <h2>Our Services</h2>
+  </div>
+
+  <div class="row">
+    <!-- First Card: IT Sector -->
+    <div class="col-md-4">
+      <div class="card h-100">
+        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="IT Sector">
+        <div class="card-body">
+          <h5 class="card-title">IT Sector</h5>
+          <p class="card-text short-text" id="it-text">
+            Our IT sector develops AI-based algorithms that classify waste accurately and control the dustbin mechanisms. <span class="more-text d-none">We use machine learning models to enhance accuracy, ensuring proper waste disposal every time.</span>
+          </p>
+          <a href="#" class="btn btn-primary" id="it-btn" onclick="toggleContent(event, 'it')">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Second Card: Hardware -->
+    <div class="col-md-4">
+      <div class="card h-100">
+        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Hardware">
+        <div class="card-body">
+          <h5 class="card-title">Hardware</h5>
+          <p class="card-text short-text" id="hardware-text">
+            Our hardware team designs robust smart bins equipped with sensors to detect waste types and control the opening mechanism. <span class="more-text d-none">These bins are designed for durability, with cutting-edge technology that integrates with our software seamlessly.</span>
+          </p>
+          <a href="#" class="btn btn-primary" id="hardware-btn" onclick="toggleContent(event, 'hardware')">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Third Card: Business Marketing -->
+    <div class="col-md-4">
+      <div class="card h-100">
+        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Business Marketing">
+        <div class="card-body">
+          <h5 class="card-title">Business Marketing</h5>
+          <p class="card-text short-text" id="marketing-text">
+            Our marketing team promotes our smart waste management solutions to cities, corporations, and governments to create eco-friendly urban environments. <span class="more-text d-none">We are expanding globally, aiming to provide a smarter and more sustainable approach to waste disposal.</span>
+          </p>
+          <a href="#" class="btn btn-primary" id="marketing-btn" onclick="toggleContent(event, 'marketing')">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}
+
+{% block script %}
+<script>
+    function toggleContent(event, section) {
+      event.preventDefault(); // Prevent page scroll or reload
+  
+      const textElement = document.getElementById(section + '-text');
+      const moreText = textElement.querySelector('.more-text');
+      const button = document.getElementById(section + '-btn');
+  
+      if (moreText.classList.contains('d-none')) {
+        moreText.classList.remove('d-none');
+        button.textContent = 'View Less';
+      } else {
+        moreText.classList.add('d-none');
+        button.textContent = 'Learn More';
+      }
+    }
+  </script>
+{% endblock script %}

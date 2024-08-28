@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Services{% endblock title %}
+
+{% block body %}
+
+<!-- Services Section with Background Image and Description -->
+
+<section id="sevices"
+  style="background-image: url('https://via.placeholder.com/1600x600'); background-size: cover; background-position: center; height: 400px; display: flex; align-items: center; justify-content: center;"
+>
+  <div class="text-center text-white">
+    <h1>Our Sevices</h1>
+    <p class="lead">
+      Our innovative waste management services include advanced solutions that cater to both residential and industrial needs. From recycling plants to biogas production, we ensure that waste is handled sustainably and efficiently.
+    </p>
+  </div>
+</section>
+
+<!-- Services Section with Two Side-by-Side Cards -->
+<div class="container my-5">
+  <div class="row">
+    <!-- First Card: Recycle Plant -->
+    <div class="col-md-6"  id="recycle">
+      <div class="card h-100">
+        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Recycle Plant">
+        <div class="card-body">
+          <h5 class="card-title">Recycle Plant</h5>
+          <p class="card-text short-text" id="recycle-text">
+            Our advanced recycling plants ensure that waste is efficiently sorted and repurposed. <span class="more-text d-none">The system helps reduce landfill usage and maximizes the reuse of materials, supporting a circular economy.</span>
+          </p>
+          <a href="#" class="btn btn-primary" id="recycle-btn" onclick="toggleContent(event, 'recycle')">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Second Card: Biogas Plant -->
+    <div class="col-md-6" id="biogas">
+      <div class="card h-100">
+        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Biogas Plant">
+        <div class="card-body">
+          <h5 class="card-title">Biogas Plant</h5>
+          <p class="card-text short-text" id="biogas-text">
+            Our biogas plants convert organic waste into clean energy, reducing waste and powering communities. <span class="more-text d-none">The process not only helps in waste management but also creates renewable energy, contributing to a more sustainable future.</span>
+          </p>
+          <a href="#" class="btn btn-primary" id="biogas-btn" onclick="toggleContent(event, 'biogas')">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}
+
+{% block script %}
+<script>
+  function toggleContent(event, section) {
+    event.preventDefault(); // Prevent page scroll or reload
+
+    const textElement = document.getElementById(section + '-text');
+    const moreText = textElement.querySelector('.more-text');
+    const button = document.getElementById(section + '-btn');
+
+    if (moreText.classList.contains('d-none')) {
+      moreText.classList.remove('d-none');
+      button.textContent = 'View Less';
+    } else {
+      moreText.classList.add('d-none');
+      button.textContent = 'Learn More';
+    }
+  }
+</script>
+{% endblock script %}

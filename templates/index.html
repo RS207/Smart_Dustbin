@@ -1,0 +1,269 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock title %}
+
+{% block style %}
+
+<style>
+    .content {
+        {% comment %} background-color: #007bff; {% endcomment %}
+        background-image: url("static/images/landing-bg-image.jpg");
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    
+    }
+    .main-content {
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+      align-items: center;
+    }
+
+    .intro {
+      flex: 1;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .intro h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .intro p {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .form-section {
+      flex: 1;
+      padding: 20px;
+      display: none;
+    }
+
+    .form-section.active {
+      display: block;
+    }
+
+    .form-section h2 {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .required-field::after {
+      content: "*";
+      color: red;
+    }
+    select,
+    input {
+      width: 100%;
+      max-width: 25vmax;
+      padding: 7px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #toggleButton {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #ff5722;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    #toggleButton:hover {
+      background-color: #e64a19;
+    }
+    
+    button[type="submit"]{
+      background-color: #12c049;
+    }
+
+    button[type="submit"]:hover{
+      background-color: #128938;
+    }
+  </style>{% endblock style %}
+
+{% block body %}
+
+  <body>
+
+    <div class="content">
+      <div class="main-content">
+        <div class="intro">
+          <h2>SMART WASTE SEGREGATOR SYSTEM!</h2>
+          <p>Transforming Waste, Enriching Environment</p>
+          <br /><br />
+          <button id="toggleButton">Get Started</button>
+        </div>
+        <div class="form-section login-form">
+          <form>
+            <h2>Login</h2>
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="login-email" name="email" placeholder="Enter your Email" required>
+            <label for="login-password">Password:</label>
+            <input
+              type="password"
+              id="login-password"
+              name="password"
+              required
+            /> <br>
+            <button type="submit">Login</button>
+            <button type="button" id="showSignupForm">Register</button>
+          </form>
+        </div>
+        <div class="form-section signup-form">
+        <form id="signupForm" method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+            <h2>Register</h2>
+            {% comment %} <label for="waste-type">Waste Type:</label>
+            <select id="waste-type" name="accountType">
+              <option value="organic" selected>Recyle</option>
+              <option value="inorganic">Biogas</option>
+            </select> {% endcomment %}
+            <label for="company-name" class="required-field"
+              >Company Name:</label
+            >
+            <input type="text" id="company-name" name="companyName"  class="form-control" required />
+            <label for="cin-number" class="required-field">CIN No:</label>
+            <input
+              type="text"
+              id="cin-number"
+              name="cinNumber"
+              maxlength="21"
+              class="form-control"
+              required
+            />
+            <label for="signup-email" class="required-field">Email:</label>
+            <input type="email" id="signup-email" name="email"   class="form-control"required />
+            <label for="signup-password" class="required-field"
+              >Create Password:</label
+            >
+            <input
+              type="password"
+              id="signup-password"
+              name="password"
+            class="form-control"
+              required
+            />
+            <label for="confirm-password" class="required-field"
+              >Re-enter Password:</label
+            >
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirmPassword"
+              required
+            /> <br>
+            <button type="submit" id="signup-submit" disabled>Register</button>
+            <button type="button" id="showLoginForm">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+ 
+  </body>
+  {% endblock body %}
+
+  {% block script %}
+  <script>
+      const toggleButton = document.getElementById("toggleButton");
+      const showLoginFormButton = document.getElementById("showLoginForm");
+      const showSignupFormButton = document.getElementById("showSignupForm");
+      const loginForm = document.querySelector(".login-form");
+      const signupForm = document.querySelector(".signup-form");
+      const intro = document.querySelector(".intro");
+      const container = document.querySelector(".container");
+  
+      toggleButton.addEventListener("click", () => {
+          if (
+              loginForm.classList.contains("active") ||
+              signupForm.classList.contains("active")
+          ) {
+              loginForm.classList.remove("active");
+              signupForm.classList.remove("active");
+              toggleButton.textContent = "Get Started";
+              if (window.innerWidth <= 767) {
+                  intro.style.display = "block"; // Show intro section on mobile
+              }
+          } else {
+              signupForm.classList.add("active");
+              toggleButton.textContent = "Close";
+              if (window.innerWidth <= 767) {
+                  intro.style.display = "none"; // Hide intro section on mobile
+              }
+          }
+      });
+  
+      showLoginFormButton.addEventListener("click", () => {
+          loginForm.classList.add("active");
+          signupForm.classList.remove("active");
+          if (window.innerWidth <= 767) {
+              intro.style.display = "none"; // Hide intro section on mobile
+          }
+      });
+  
+      showSignupFormButton.addEventListener("click", () => {
+          signupForm.classList.add("active");
+          loginForm.classList.remove("active");
+          if (window.innerWidth <= 767) {
+              intro.style.display = "none"; // Hide intro section on mobile
+          }
+      });
+  
+      const passwordInput = document.getElementById("signup-password");
+      const confirmInput = document.getElementById("confirm-password");
+      const signupSubmitButton = document.getElementById("signup-submit");
+  
+      function checkPasswordMatch() {
+          if (passwordInput.value === confirmInput.value) {
+              signupSubmitButton.disabled = false;
+          } else {
+              signupSubmitButton.disabled = true;
+          }
+      }
+  
+      passwordInput.addEventListener("input", checkPasswordMatch);
+      confirmInput.addEventListener("input", checkPasswordMatch);
+  
+      function toggleMenu() {
+          var menu = document.getElementById("myLinks");
+          if (menu.style.maxHeight && menu.style.maxHeight !== "0px") {
+              menu.style.maxHeight = "0px";
+          } else {
+              menu.style.maxHeight = menu.scrollHeight + "px";
+          }
+      }
+
+      
+
+      
+  </script>{% endblock script %}

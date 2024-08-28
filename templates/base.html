@@ -1,0 +1,146 @@
+<!-- username - admin , pwd - admin@2004 -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %} {% endblock title %}|Vision Igniters</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* Custom styles to increase navbar link text size */
+      .navbar .nav-link {
+        font-size: 1.5rem; /* Adjust size as needed */
+      }
+
+      /* Custom styles to increase navbar link text size */
+      .navbar .nav-link {
+        font-size: 1.5rem; /* Adjust size as needed */
+      }
+
+      /* Style for the logo container */
+      .navbar-brand img {
+        width: 25vh; /* Fill the square */
+        margin: 3px 15px;
+      }
+
+      /* Style for active nav link */
+      .navbar .nav-link.active {
+        color: white; /* Highlight the active link in white */
+      }
+    </style>
+
+    {% block style %}{% endblock style %}
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"
+          ><img src="{% static 'images/vision_logo-crop.png' %}" alt="Vision Igniters"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link {% if request.path == '/' %}active{% endif %}"
+                aria-current="page"
+                href="/"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link {% if request.path == '/team/' %}active{% endif %}"
+                href="{% url 'team' %}"
+                >About us </a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link {% if request.path == '/management/' %}active{% endif %}"
+                href="{% url 'management' %}"
+                >Management</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle {% if request.path == '/services/' %}active{% endif %}"
+                href="{% url 'services' %}#services"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Services
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="{% url 'services' %}#recycle"
+                    >Recycle Plant</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'services' %}#biogas"
+                    >Biogas Plant</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link {% if request.path == '/collaborations/' %}active{% endif %}"
+                href="{% url 'collaborations' %}"
+                >Collaborations</a
+              >
+            </li>
+           
+            <li class="nav-item">
+              <a
+                class="nav-link {% if request.path == '/contact/' %}active{% endif %}"
+                href="{% url 'contact' %}"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {% if messages %} {% for message in messages %}
+    <div
+      class="alert alert-{{ message.tags }} alert-dismissible fade show my-0"
+      role="alert"
+    >
+      <strong>{{ message }}</strong>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endfor %} {% endif %} {% block body %}{% endblock body %}
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    {% block script %}{% endblock script %}
+  </body>
+</html>

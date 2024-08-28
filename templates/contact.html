@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact Us{% endblock title %}
+{% block style %}
+<style>
+        button[type="submit"] {
+        background-color: #ff5722;
+        color: #fff;
+        border: none;
+        padding: 15px 30px;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #e64a19;
+    }
+
+    .input-group {
+        width: 100%;
+    }
+
+    .input-group .form-select {
+        max-width: 120px; /* Fixed width for the dropdown */
+    }
+
+    .input-group .form-control {
+        flex: 1; /* Takes up remaining space */
+    }
+</style>{% endblock style %}
+
+{% block body %}
+    <div class="container-fluid px-0 mb-3">
+        <!-- Replace static image path with the dynamic random image URL -->
+        <img src="{% url 'random_image' 'contact_us_pics' %}" class="d-block w-100 mx-0" alt="Contact img" style="height: 70vmin; width: 100%;">
+    </div>
+    {% comment %} <div class="container">
+        <h1 class="text-center">Contact Us</h1>
+
+    </div> {% endcomment %}
+    <div class="container mb-4 py-4">
+        <h1 class="text-center mb-4">Contact Us</h1>
+        <form action="{% url 'contact' %}" method="POST">
+        {% csrf_token %}
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your Name" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Email" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="contact" class="form-label">Contact Number</label>
+                <div class="input-group">
+                    <select class="form-select" id="country-code" name="country_code">
+                        <option value="+91" selected>+91 India</option>
+                        <option value="+1">+1 USA</option>
+                        <option value="+44">+44 UK</option>
+                        <option value="+81">+81 Japan</option>
+                        <option value="+49">+49 Germany</option>
+                        <option value="+33">+33 France</option>
+                        <option value="+39">+39 Italy</option>
+                        <option value="+34">+34 Spain</option>
+                        <option value="+61">+61 Australia</option>
+                        <option value="+55">+55 Brazil</option>
+                        <option value="+27">+27 South Africa</option>
+                        <!-- Add more country codes as needed -->
+                    </select>
+                    <input type="tel" class="form-control" id="contact" name="contact" placeholder="Enter your phone number" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="4" placeholder="What you Want to contact us for " required></textarea>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn">Submit</button>
+            </div>
+        </form>
+    </div>
+    
+{% endblock body %}

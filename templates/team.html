@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}About Us{% endblock title %}
+{% block body %}
+<!-- Our Vision Section -->
+<section style="background-image: url('https://via.placeholder.com/1600x600'); background-size: cover; background-position: center; height: 400px; display: flex; align-items: center; justify-content: center;">
+  <div class="text-center text-white">
+    <h1>Our Vision</h1>
+    <p class="lead">
+      Our vision is to lead the industry with innovative solutions that transform the way waste management is approached, making a significant impact on the environment and community.
+    </p>
+  </div>
+</section>
+
+<!-- Space between Vision and Mission sections -->
+<div class="my-5"></div>
+
+<!-- Our Mission Section -->
+<section style="background-image: url('https://via.placeholder.com/1600x600'); background-size: cover; background-position: center; height: 400px; display: flex; align-items: center; justify-content: center;">
+  <div class="text-center text-white">
+    <h1>Our Mission</h1>
+    <p class="lead">
+      Our mission is to deliver cutting-edge waste management technologies and solutions that drive efficiency and sustainability, enhancing urban living standards and promoting a greener future.
+    </p>
+  </div>
+</section>
+
+<!-- Team Members Section -->
+<section class="container my-5">
+  <h2 class="text-center mb-4">Meet Our Team</h2>
+  <div class="row">
+    <!-- Team Member 1 (Left DP, Text Right) -->
+    <div class="col-12 mb-4">
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="d-flex flex-row align-items-center">
+          <div class="me-4">
+            
+            <img src="{% static 'images/team/rishabh.jpg' %}" class="img-fluid rounded-circle" alt="Member 1" style="width: 150px; height: 150px;">
+          </div>
+          <div class="bg-light p-4" style="width: 300px; border-radius: 1.5rem; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+            <h4 class="text-start mb-2"><strong>Rishabh Kumar Mandal</strong></h4>
+            <p class="text-start mb-0">Technical Lead</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Team Member 2 (Right DP, Text Left) -->
+    <div class="col-12 mb-4">
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="d-flex flex-row-reverse align-items-center">
+          <div class="ms-4">
+            <img src="{% static 'images/team/raghav.jpg' %}" class="img-fluid rounded-circle" alt="Member 2" style="width: 150px; height: 150px;">
+          </div>
+          <div class="bg-light p-4" style="width: 300px; border-radius: 1.5rem; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+            <h4 class="text-start mb-2"><strong>Jane Smith</strong></h4>
+            <p class="text-start mb-0">CTO</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Team Member 3 (Left DP, Text Right) -->
+    <div class="col-12 mb-4">
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="d-flex flex-row align-items-center">
+          <div class="me-4">
+            <img src="{% static 'images/team/rabina.jpg' %}" class="img-fluid rounded-circle" alt="Member 3" style="width: 150px; height: 150px;">
+          </div>
+          <div class="bg-light p-4" style="width: 300px; border-radius: 1.5rem; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+            <h4 class="text-start mb-2"><strong>Emily Johnson</strong></h4>
+            <p class="text-start mb-0">COO</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Team Member 4 (Right DP, Text Left) -->
+    <div class="col-12 mb-4">
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="d-flex flex-row-reverse align-items-center">
+          <div class="ms-4">
+            <img src="{% static 'images/team/Akansha.jpg' %}" class="img-fluid rounded-circle" alt="Member 4" style="width: 150px; height: 150px;">
+          </div>
+          <div class="bg-light p-4" style="width: 300px; border-radius: 1.5rem; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+            <h4 class="text-start mb-2"><strong>Michael Brown</strong></h4>
+            <p class="text-start mb-0">CFO</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock body %}
